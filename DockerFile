@@ -9,4 +9,4 @@ COPY . /pipeline
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "app.py"]
+CMD ["python", "appp.py"]
