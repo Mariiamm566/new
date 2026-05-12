@@ -26,14 +26,14 @@ jobs:
 
       - name: Build Docker Image
         if: success()
-        run: docker build -t myapp .
+        run: docker build -t pipline .
 
       - name: Deploy Project
         if: success()
         run: |
-          docker stop myapp || true
-          docker rm myapp || true
-          docker run -d --name myapp -p 80:80 myapp
+          docker stop pipline || true
+          docker rm pipline || true
+          docker run -d --name pipline -p 80:80 myapp
 
       - name: Upload README as artifact #this part about upload readme file was missed in the given code.
         uses: actions/upload-artifact@v4
