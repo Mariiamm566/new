@@ -25,15 +25,13 @@ jobs:
         run: python -c "import torch; print('OK')" #fixed because the code didn't put the ":".
 
       - name: Build Docker Image
-        if: success()
-        run: docker build -t pipline .
+        run: docker build -t pipeline .
 
       - name: Deploy Project
-        if: success()
         run: |
-          docker stop pipline || true
-          docker rm pipline || true
-          docker run -d --name pipline -p 80:80 myapp
+          docker stop pipeline || true
+          docker rm pipeline || true
+          docker run -d --name pipeline -p 80:80 pipeline
 
       - name: Upload README as artifact #this part about upload readme file was missed in the given code.
         uses: actions/upload-artifact@v4
