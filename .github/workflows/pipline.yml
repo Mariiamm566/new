@@ -1,0 +1,38 @@
+name: CI Workflow #fixed because the code didn't put the ":".
+
+on:
+  push:
+    branches:  #fixed because the task want to except pushes to the main branch.
+      - main #fixed because this is the correct way to write the main.
+
+jobs:
+  test:
+    runs-on: ubuntu-latest #fixed because the code didn't put the ":".
+
+    steps:
+      - name: Checkout code #fixed because the code didin't put checkout code.
+        uses: actions/checkout@v4
+
+      - name: Set Up python #fixed because the code didin't setup the python and didn't select the version.
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt #fixed because this line didn't completed in the given code.
+
+      - name: Test python
+        run: python -c "import torch; print('OK')" #fixed because the code didn't put the ":".
+
+      - name: Upload README as artifact #this part about upload readme file was missed in the given code.
+        uses: actions/upload-artifact@v4
+        with:
+          name: Project-README
+          path: README.md
+
+
+
+
+##Qustion answers:
+#1. we use "needs" when we work on more than one job and job 2 (for example) depands on job 1 so we use "needs" to stop running jobs in parallel.
+#2. when the jobs don't depends on each other.
